@@ -7,12 +7,12 @@ RUN [ "apk", "add", "--no-cache", "cmake" ]
 RUN [ "apk", "add", "--no-cache", "ninja" ]
 
 COPY --from=musl /include /dep/musl/include
-ENV CFLAGS="-nostdinc -nostdlib -I/dep/musl/include"
 
 WORKDIR /src
 COPY zlib .
 
 WORKDIR /build
+ENV CFLAGS="-nostdinc -nostdlib -I/dep/musl/include"
 RUN [ \
 	"cmake", "/src", "-G", "Ninja", \
 	"-DCMAKE_C_COMPILER=clang", \
