@@ -1,4 +1,4 @@
-FROM ereboros/musl:v1.1.20 AS musl
+FROM ereboros/musl:v1.1.20-bootstrap AS musl
 
 FROM alpine:3.8 AS zlib
 RUN [ "apk", "add", "--no-cache", "llvm5" ]
