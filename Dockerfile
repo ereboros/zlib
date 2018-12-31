@@ -6,7 +6,8 @@ RUN [ "apk", "add", "--no-cache", "clang" ]
 RUN [ "apk", "add", "--no-cache", "cmake" ]
 RUN [ "apk", "add", "--no-cache", "ninja" ]
 
-COPY --from=musl / /usr
+COPY --from=musl /include /dep/musl/include
+ENV CFLAGS="-nostdinc -nostdlib -I/dep/musl/include"
 
 WORKDIR /src
 COPY zlib .
