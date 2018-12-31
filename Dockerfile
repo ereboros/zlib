@@ -22,10 +22,10 @@ RUN [ \
 ]
 RUN [ "ninja", "zlibstatic" ]
 
-WORKDIR /pkg/lib
+WORKDIR /pkg/include
 RUN [ "cp", "/src/zlib.h", "/build/zconf.h", "." ]
 
-WORKDIR /pkg/include
+WORKDIR /pkg/lib
 RUN [ "cp", "/build/libz.a", "." ]
 
 FROM scratch
